@@ -49,25 +49,6 @@ export default defineComponent({
         ],
       },
       {
-        img: 'images/vite.svg',
-        title: 'Vite',
-        text: 'Get ready for a development environment that can finally catch up with you.',
-        url: 'https://vitejs.dev/',
-        cssClass: 'vite',
-        colors: [
-          {
-            color: '#bd34fe',
-            gradientPosText: '30%',
-            gradientPosBg: '65%',
-          },
-          {
-            color: '#41d1ff',
-            gradientPosText: '',
-            gradientPosBg: '30%',
-          },
-        ],
-      },
-      {
         img: 'images/vuetify-logo-v3-dark.svg',
         title: 'Vuetify',
         text: 'Vuetify is a no design skills required UI Library with beautifully handcrafted Vue Components.',
@@ -96,11 +77,11 @@ export default defineComponent({
         colors: [
           {
             color: '#1c7dd5',
-            gradientPosText: '40%',
+            gradientPosText: '25%',
             gradientPosBg: '65%',
           },
           {
-            color: '#c2c7d1',
+            color: '#FFD43B',
             gradientPosText: '',
             gradientPosBg: '30%',
           },
@@ -120,6 +101,25 @@ export default defineComponent({
           },
           {
             color: '#8ae99c',
+            gradientPosText: '',
+            gradientPosBg: '30%',
+          },
+        ],
+      },
+      {
+        img: 'images/vite.svg',
+        title: 'Vite',
+        text: 'Get ready for a development environment that can finally catch up with you.',
+        url: 'https://vitejs.dev/',
+        cssClass: 'vite',
+        colors: [
+          {
+            color: '#bd34fe',
+            gradientPosText: '30%',
+            gradientPosBg: '65%',
+          },
+          {
+            color: '#41d1ff',
             gradientPosText: '',
             gradientPosBg: '30%',
           },
