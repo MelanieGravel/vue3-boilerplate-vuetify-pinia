@@ -1,11 +1,11 @@
 import FakeDataView from './components/FakeDataView.vue';
-import HelloWorld from './components/HelloWorld.vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import UsefulLinks from './components/UsefulLinks.vue';
 
 const routes = [
   {
     path: '/',
-    component: HelloWorld,
+    component: UsefulLinks,
     alias: '/documentation',
   },
   {
