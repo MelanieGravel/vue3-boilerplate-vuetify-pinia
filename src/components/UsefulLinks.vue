@@ -173,9 +173,9 @@ export default defineComponent({
           <v-card-title class="text-h4 font-weight-bold py-4">
             <span class="useful-links__card__title" :style="gradient(item.colors, false)">{{ item.title }}</span>
           </v-card-title>
-          <v-card-subtitle>
-            {{ gradient(item.colors, false) }}
-          </v-card-subtitle>
+          <!--          <v-card-subtitle>-->
+          <!--            {{ gradient(item.colors, false) }}-->
+          <!--          </v-card-subtitle>-->
           <v-card-text>
             {{ item.text }}
           </v-card-text>

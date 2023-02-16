@@ -1,14 +1,20 @@
+import { App } from 'vue';
+
 import 'vuetify/styles';
+
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
+
 import { aliases, fa } from 'vuetify/iconsets/fa-svg';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 // import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { fass } from '@fortawesome/sharp-solid-svg-icons';
 import { fad } from '@fortawesome/pro-duotone-svg-icons';
-import { App } from 'vue';
+
+// import '../styles/settings.scss';
+// import 'vuetify/lib/styles/main.sass';
 
 const vuetifyConfig = (app: App) => {
   app.component('font-awesome-icon', FontAwesomeIcon); // Register component globally
@@ -27,7 +33,7 @@ const vuetifyConfig = (app: App) => {
     },
     theme: {
       defaultTheme: 'dark',
-    }
+    },
   });
 };
 
