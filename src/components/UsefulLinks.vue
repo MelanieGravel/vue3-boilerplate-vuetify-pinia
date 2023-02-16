@@ -196,7 +196,7 @@ export default defineComponent({
   &__card {
 
     &__wrapper {
-      background-color: #333;
+      background-color: #000;
     }
 
     &__bg {
