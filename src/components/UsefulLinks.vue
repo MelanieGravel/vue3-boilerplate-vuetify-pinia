@@ -148,7 +148,9 @@ export default defineComponent({
 
 <template>
   <v-container>
-    <h1 class="my-8 text-h4 text-md-h3 text-lg-h2 text-xl-h1">{{ msg }}</h1>
+    <h1 class="my-8 text-h4 text-md-h3 text-lg-h2 text-xl-h1 text-vue">
+      {{ msg }}
+    </h1>
     <v-row class="mt-4">
       <v-col cols="12" sm="6" md="6" lg="4" xl="3" v-for="(item, i) in docItems" :key="`docItem_${i}`">
         <v-card :class="`useful-links__card ${item.cssClass}`">
