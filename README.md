@@ -1,5 +1,5 @@
-# Vue 3 + TypeScript + Vite
-Base Template for Vue 3, Vite, Vuetify, Pinia, FontAwesome, etc. 
+# Quizzes
+Base Template for Vue 3, Vite, Vuetify, Pinia, FontAwesome, etc.
 
 ## Libraries
 - [Vue 3.0](https://vuejs.org/)

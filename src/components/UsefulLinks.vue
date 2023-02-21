@@ -147,8 +147,8 @@ export default defineComponent({
 <template>
   <v-container fluid>
     <hero-image
-      title="Melanie Gravel's Boilerplate"
-      subtitle="Boilerplate Vue 3, Typescript, Vuetify, FontAwesome, Pinia, Vue Router. It\'s not your to build your own application!">
+      title="Quizzes"
+    >
     </hero-image>
     <v-row class="mt-4">
       <v-col cols="12" sm="6" md="6" lg="4" xl="3" v-for="(item, i) in docItems" :key="`docItem_${i}`">

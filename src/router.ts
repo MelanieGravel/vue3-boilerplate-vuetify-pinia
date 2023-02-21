@@ -1,5 +1,5 @@
-import FakeDataView from './components/FakeDataView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import FakeDataView from './components/FakeDataView.vue';
 import UsefulLinks from './components/UsefulLinks.vue';
 
 const routes = [
