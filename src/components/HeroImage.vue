@@ -19,7 +19,11 @@ export default defineComponent({
     imgURL: {
       type: String,
       default: '',
-    }
+    },
+    height: {
+      type: Number,
+      default: undefined,
+    },
   },
 });
 </script>
@@ -28,6 +32,7 @@ export default defineComponent({
   <v-parallax
     class="hero-image"
     :src="imgURL"
+    :height="height"
   >
     <div class="d-flex flex-column fill-height justify-center align-center text-white">
       <h1 class="text-h4 text-md-h3 text-lg-h2 text-xl-h1 text-vue">
@@ -41,9 +46,9 @@ export default defineComponent({
 </template>
 
 <style lang="scss">
-  .hero-image {
-    img {
-      filter: brightness(40%);
-    }
+.hero-image {
+  img {
+    filter: brightness(40%);
   }
+}
 </style>
