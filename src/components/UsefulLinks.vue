@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, Ref, ref } from 'vue';
-import HeroImage from './HeroImage.vue';
+import HeroImage from './common/HeroImage.vue';
 
 interface GradientColor {
   color: string;
