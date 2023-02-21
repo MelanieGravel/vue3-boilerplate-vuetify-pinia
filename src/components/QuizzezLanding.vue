@@ -19,7 +19,7 @@ interface DocItem {
 }
 
 export default defineComponent({
-  name: 'UsefulLinks',
+  name: 'QuizzezLanding',
   components: {
     HeroImage,
   },
@@ -41,83 +41,6 @@ export default defineComponent({
           },
           {
             color: '#647eff',
-            gradientPosText: '',
-            gradientPosBg: '30%',
-          },
-        ],
-      },
-      {
-        img: 'images/vuetify-logo-v3-dark.svg',
-        title: 'Vuetify',
-        text: 'Vuetify is a no design skills required UI Library with beautifully handcrafted Vue Components.',
-        url: 'https://vuetifyjs.com/en/',
-        cssClass: 'vuetify',
-        colors: [
-          {
-            color: '#56b8ff',
-            gradientPosText: '30%',
-            gradientPosBg: '65%',
-          },
-          {
-            color: '#1866c0',
-            gradientPosText: '',
-            gradientPosBg: '30%',
-          },
-        ],
-      },
-      {
-        img: 'images/font-awesome-frameworks-developer.svg',
-        title: 'Font Awesome',
-        text: 'The internet\'s favorite icon set,used by millions of designers, developers, and content creators',
-        url: 'https://fontawesome.com/icons',
-        cssClass: 'fa',
-        isFull: true,
-        colors: [
-          {
-            color: '#1c7dd5',
-            gradientPosText: '25%',
-            gradientPosBg: '65%',
-          },
-          {
-            color: '#FFD43B',
-            gradientPosText: '',
-            gradientPosBg: '30%',
-          },
-        ],
-      },
-      {
-        img: 'images/pinia-logo.svg',
-        title: 'Pinia',
-        text: 'Type Safe, Extensible, and Modular by design. Forget you are even using a store.',
-        url: 'https://pinia.vuejs.org/',
-        cssClass: 'pinia',
-        colors: [
-          {
-            color: '#f7d336',
-            gradientPosText: '40%',
-            gradientPosBg: '65%',
-          },
-          {
-            color: '#8ae99c',
-            gradientPosText: '',
-            gradientPosBg: '30%',
-          },
-        ],
-      },
-      {
-        img: 'images/vite.svg',
-        title: 'Vite',
-        text: 'Get ready for a development environment that can finally catch up with you.',
-        url: 'https://vitejs.dev/',
-        cssClass: 'vite',
-        colors: [
-          {
-            color: '#bd34fe',
-            gradientPosText: '30%',
-            gradientPosBg: '65%',
-          },
-          {
-            color: '#41d1ff',
             gradientPosText: '',
             gradientPosBg: '30%',
           },
@@ -147,7 +70,7 @@ export default defineComponent({
 <template>
   <v-container fluid>
     <hero-image
-      title="Useful Links"
+      title="Quizzes"
       :height="320"
       img-u-r-l="/images/ml_hero.jpeg"
     >

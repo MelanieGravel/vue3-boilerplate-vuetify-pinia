@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, Ref, ref } from 'vue';
+import { defineComponent, Ref, ref } from 'vue';
 import { useDisplay } from 'vuetify';
 import FakeDataView from './components/FakeDataView.vue';
 
@@ -36,6 +36,11 @@ export default defineComponent({
           title="Home"
           to="/"
           prepend-icon="fass fa-home"
+        ></v-list-item>
+        <v-list-item
+          title="Useful Links"
+          to="/documentation"
+          prepend-icon="fass fa-book"
         ></v-list-item>
         <v-list-item
           title="Fake"
