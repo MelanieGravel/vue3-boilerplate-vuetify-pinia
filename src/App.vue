@@ -24,7 +24,7 @@ export default defineComponent({
   <v-layout>
     <v-app-bar>
       <v-app-bar-nav-icon class="d-sm-none" icon="fad fa-bars" @click="menuOpen = !menuOpen"></v-app-bar-nav-icon>
-      <v-app-bar-title class="text-h5"><v-icon color="vue">fab fa-vuejs</v-icon> Vue Boilerplate</v-app-bar-title>
+      <v-app-bar-title class="text-h5"><v-icon color="vue">fab fa-vuejs</v-icon> Vue 3 Boilerplate</v-app-bar-title>
     </v-app-bar>
     <v-navigation-drawer
       v-model="menuOpen"
