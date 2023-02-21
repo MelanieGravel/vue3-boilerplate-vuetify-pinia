@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, Ref, ref } from 'vue';
+import HeroImage from './HeroImage.vue';
 
 interface GradientColor {
   color: string;
@@ -19,11 +20,8 @@ interface DocItem {
 
 export default defineComponent({
   name: 'UsefulLinks',
-  props: {
-    msg: {
-      type: String,
-      default: 'Boilerplate Vue 3, Typescript, Vuetify, FontAwesome, Pinia, Vue Router',
-    },
+  components: {
+    HeroImage,
   },
   setup() {
     const count: Ref<number> = ref(0);
@@ -147,10 +145,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-container>
-    <h1 class="my-8 text-h4 text-md-h3 text-lg-h2 text-xl-h1 text-vue">
-      {{ msg }}
-    </h1>
+  <v-container fluid>
+    <hero-image
+      title="Melanie Gravel's Boilerplate"
+      subtitle="Boilerplate Vue 3, Typescript, Vuetify, FontAwesome, Pinia, Vue Router. It\'s not your to build your own application!">
+    </hero-image>
     <v-row class="mt-4">
       <v-col cols="12" sm="6" md="6" lg="4" xl="3" v-for="(item, i) in docItems" :key="`docItem_${i}`">
         <v-card :class="`useful-links__card ${item.cssClass}`">
@@ -182,7 +181,7 @@ export default defineComponent({
             {{ item.text }}
           </v-card-text>
           <v-card-actions class="justify-end">
-            <v-btn link :href="item.url">
+            <v-btn link :href="item.url" location="blank">
               <v-icon class="mr-2">fad fa-arrow-up-right-from-square</v-icon>
               Go To Doc
             </v-btn>

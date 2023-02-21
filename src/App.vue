@@ -35,7 +35,7 @@ export default defineComponent({
         <v-list-item
           title="Home"
           to="/"
-          prepend-icon="fass fa-books"
+          prepend-icon="fass fa-home"
         ></v-list-item>
         <v-list-item
           title="Fake"
