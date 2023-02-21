@@ -148,6 +148,7 @@ export default defineComponent({
   <v-container fluid>
     <hero-image
       title="Quizzes"
+      img-u-r-l="/images/ml_hero.jpeg"
     >
     </hero-image>
     <v-row class="mt-4">
@@ -177,11 +178,11 @@ export default defineComponent({
           <!--          <v-card-subtitle>-->
           <!--            {{ gradient(item.colors, false) }}-->
           <!--          </v-card-subtitle>-->
-          <v-card-text>
+          <v-card-text class="useful-links__card__text">
             {{ item.text }}
           </v-card-text>
           <v-card-actions class="justify-end">
-            <v-btn link :href="item.url" location="blank">
+            <v-btn link :href="item.url" target="_blank">
               <v-icon class="mr-2">fad fa-arrow-up-right-from-square</v-icon>
               Go To Doc
             </v-btn>
@@ -223,6 +224,10 @@ export default defineComponent({
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       -webkit-text-size-adjust: 100%;
+    }
+
+    &__text {
+      min-height: 56px;
     }
   }
 }
