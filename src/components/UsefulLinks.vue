@@ -148,6 +148,7 @@ export default defineComponent({
   <v-container fluid>
     <hero-image
       title="Quizzes"
+      :height="320"
       img-u-r-l="/images/ml_hero.jpeg"
     >
     </hero-image>
