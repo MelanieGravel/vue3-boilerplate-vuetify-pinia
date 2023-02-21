@@ -6,26 +6,28 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: 'Hero Image',
+      default: '',
     },
     subtitle: {
       type: String,
-      default: 'Build your application today!',
+      default: '',
     },
     isCentered: {
       type: Boolean,
       default: true,
+    },
+    imgURL: {
+      type: String,
+      default: '',
     }
-  },
-  setup() {
-
   },
 });
 </script>
 
 <template>
   <v-parallax
-    src="/images/ml_hero.jpeg"
+    class="hero-image"
+    :src="imgURL"
   >
     <div class="d-flex flex-column fill-height justify-center align-center text-white">
       <h1 class="text-h4 text-md-h3 text-lg-h2 text-xl-h1 text-vue">
@@ -39,5 +41,9 @@ export default defineComponent({
 </template>
 
 <style lang="scss">
-
+  .hero-image {
+    img {
+      filter: brightness(40%);
+    }
+  }
 </style>
