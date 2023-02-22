@@ -1,3 +1,8 @@
+export interface Quizz {
+  title: string,
+  questions: QuizzItem[],
+}
+
 export interface QuizzItem {
   question: string,
   answers: string[],

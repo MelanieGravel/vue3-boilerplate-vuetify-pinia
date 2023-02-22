@@ -1,11 +1,11 @@
 <script lang="ts">
 import { computed, defineComponent, Ref, ref } from 'vue';
-import HeroImage from './HeroImage.vue';
+import HeroImage from './common/HeroImage.vue';
 import { shuffle } from '../utils';
-import { QuizzItem, QuizzMistake } from '../models/quizz.model';
+import { Quizz, QuizzItem, QuizzMistake } from '../models/quizz.model';
 import { quizzes } from '../data/quizzes';
 import { useRoute, useRouter } from 'vue-router';
-import QuestionCard from './QuestionCard.vue';
+import QuestionCard from './common/QuestionCard.vue';
 
 export default defineComponent({
   name: 'QuizzezLanding',
@@ -19,19 +19,20 @@ export default defineComponent({
 
     let goodAnswers: Ref<number> = ref<number>(0);
     let currentQuestionIndex: Ref<number> = ref<number>(0);
-    let quizData: QuizzItem[] = quizzes[id as string];
+    let quizData: Quizz = quizzes[id as string];
+    let quizQuestions: QuizzItem[] = quizData.questions;
     let quizMistakes: Ref<QuizzMistake[]> = ref([]);
 
     const currentQuestion = computed<QuizzItem>(() => {
-      return quizData[currentQuestionIndex.value];
+      return quizQuestions[currentQuestionIndex.value];
     });
 
     const canDisplayResult = computed<boolean>(() => {
-      return currentQuestionIndex.value >= quizData.length;
+      return currentQuestionIndex.value >= quizQuestions.length;
     });
 
     const score = computed<number>(() => {
-      return Math.round(goodAnswers.value / (quizData.length) * 100);
+      return Math.round(goodAnswers.value / (quizQuestions.length) * 100);
     });
 
     function answerQuestion(answerIndex: number): void {
@@ -52,13 +53,13 @@ export default defineComponent({
     }
 
     function resetTest(): void {
-      quizData = shuffle(quizData);
+      quizQuestions = shuffle(quizQuestions);
       goodAnswers.value = 0;
       currentQuestionIndex.value = 0;
       quizMistakes.value = [];
     }
 
-    quizData = shuffle(quizData);
+    quizQuestions = shuffle(quizQuestions);
 
     return {
       quizData,

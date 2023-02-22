@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { QuizzItem } from '../models/quizz.model';
+import { QuizzItem } from '../../models/quizz.model';
 
 export default defineComponent({
   name: 'QuestionCard',
