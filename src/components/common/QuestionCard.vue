@@ -24,7 +24,7 @@ export default defineComponent({
     });
 
     function answerQuestion(): void {
-      if(props.currentQuestion.goodAnswerIndexes.length > 1) {
+      if (props.currentQuestion.goodAnswerIndexes.length > 1) {
         emit('answerQuestion', choices.value);
       } else {
         emit('answerQuestion', [choice.value]);
@@ -48,6 +48,7 @@ export default defineComponent({
     <v-card-title>
       Question {{ questionNumber + 1 }}
     </v-card-title>
+    <v-img v-if="currentQuestion.imgUrl" :src="currentQuestion.imgUrl"></v-img>
     <v-card-text>
       {{ currentQuestion.question }}
 

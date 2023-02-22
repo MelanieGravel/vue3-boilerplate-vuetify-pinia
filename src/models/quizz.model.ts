@@ -7,6 +7,7 @@ export interface QuizzItem {
   question: string,
   answers: string[],
   goodAnswerIndexes: number[],
+  imgUrl?: string,
   explanation?: string,
 }
 

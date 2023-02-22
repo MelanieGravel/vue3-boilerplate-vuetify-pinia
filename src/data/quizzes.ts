@@ -54,6 +54,24 @@ const quizzes: { [index: string]: Quizz } = {
           'We also cannot cause any changes to DKIM.' +
           'So all three people (Adrien, Huaying, Eloise) must be added to the Developers role in MIRO in order for all three to receive Issue Created notifications in MIRO.',
       },
+      {
+        question: 'Huaying and Eloise are the only members of the "auditors" group. ' +
+          'They need to be able to edit the due dates in those three projects, but should not receive more permission than needed. ' +
+          'Which two solutions will meet their need? (Choose two.)',
+        imgUrl: '/images/aws_acp-120_img_1.png',
+        answers: [
+          'Add them to the Analysts role in the three projects.',
+          'Add them to the Administrators role in the three projects.',
+          'Add them to the Developers role in the three projects.',
+          'Add "auditors" group to Browse Projects, Edit Issues, and Schedule Issues permission.',
+          'Add "auditors" group to Browse Projects, Edit Issues, and Administer Projects permission.',
+        ],
+        goodAnswerIndexes: [0, 3],
+        explanation: ' Granting Administer Projects permission to the users will give them too much permission. ' +
+          'The Administrators role is missing the Schedule Issues permission. The Developers role is missing the Schedule Issues permission. ' +
+          'The Analyst role has Browse Projects, Edit Issues, and Schedule Issues permission. ' +
+          'If we add Huaying and Eloise to that role in all 3 projects, they will have the right permission to edit due dates.',
+      },
     ],
   },
   teeth: {

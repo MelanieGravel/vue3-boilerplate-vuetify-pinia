@@ -6,7 +6,7 @@ import { Quizz, QuizzItem, QuizzMistake } from '../models/quizz.model';
 import { quizzes } from '../data/quizzes';
 import { useRoute } from 'vue-router';
 import QuestionCard from './common/QuestionCard.vue';
-import {isEqual, sortBy} from 'lodash';
+import { isEqual, sortBy } from 'lodash';
 
 export default defineComponent({
   name: 'QuizzezLanding',
@@ -37,8 +37,6 @@ export default defineComponent({
     });
 
     function answerQuestion(answerIndexes: number[]): void {
-      console.log(sortBy(answerIndexes));
-      console.log(currentQuestion.value.goodAnswerIndexes);
       if (isEqual(sortBy(answerIndexes), currentQuestion.value.goodAnswerIndexes)) {
         goodAnswers.value++;
       } else {
