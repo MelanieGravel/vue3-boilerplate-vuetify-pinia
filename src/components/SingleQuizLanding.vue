@@ -5,11 +5,13 @@ import { shuffle } from '../utils';
 import { QuizzItem, QuizzMistake } from '../models/quizz.model';
 import { quizzes } from '../data/quizzes';
 import { useRoute, useRouter } from 'vue-router';
+import QuestionCard from './QuestionCard.vue';
 
 export default defineComponent({
   name: 'QuizzezLanding',
   components: {
     HeroImage,
+    QuestionCard,
   },
   setup() {
     const route = useRoute();
@@ -32,15 +34,16 @@ export default defineComponent({
       return Math.round(goodAnswers.value / (quizData.length) * 100);
     });
 
-    function answerQuestion(index: number): void {
-      if (index === currentQuestion.value.goodAnswerIndex) {
+    function answerQuestion(answerIndex: number): void {
+      console.log('quiz ', answerIndex);
+      if (answerIndex === currentQuestion.value.goodAnswerIndex) {
         goodAnswers.value++;
       } else {
         quizMistakes.value.push(
           {
             question: currentQuestion.value.question,
             goodAnswer: currentQuestion.value.answers[currentQuestion.value.goodAnswerIndex],
-            wrongAnswer: currentQuestion.value.answers[index],
+            wrongAnswer: currentQuestion.value.answers[answerIndex],
             explanation: currentQuestion.value.explanation || '',
           },
         );
@@ -80,8 +83,9 @@ export default defineComponent({
       :height="120"
     >
     </hero-image>
-    <v-card class="ma-auto mt-10 text-center" max-width="800">
-      <template v-if="canDisplayResult">
+    <template v-if="canDisplayResult">
+      <v-card class="ma-auto mt-10 text-center" max-width="800">
+
         <v-card-title>
           Quizz over
         </v-card-title>
@@ -113,25 +117,16 @@ export default defineComponent({
             Try Again
           </v-btn>
         </v-card-actions>
-      </template>
+      </v-card>
+    </template>
 
-      <template v-else>
-        <v-card-title>
-          Question {{ currentQuestionIndex + 1 }}
-        </v-card-title>
-        <v-card-text>
-          {{ currentQuestion.question }}
-
-          <v-list class="text-left">
-            <v-list-item v-for="(answer, index) in currentQuestion.answers"
-                         @click="answerQuestion(index)"
-                         prepend-icon="fad fa-circle">
-              {{ answer }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-      </template>
-    </v-card>
+    <template v-else>
+      <question-card
+        :questionNumber="currentQuestionIndex"
+        :currentQuestion="currentQuestion"
+        @answerQuestion="answerQuestion">
+      </question-card>
+    </template>
   </v-container>
 </template>
 
