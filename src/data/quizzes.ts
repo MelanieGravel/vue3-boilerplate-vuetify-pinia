@@ -17,7 +17,7 @@ const quizzes: { [index: string]: Quizz } = {
           'She can add Jira administrators to groups.',
           'She can add regular users to the Jira site.',
         ],
-        goodAnswerIndex: 2,
+        goodAnswerIndexes: [2],
         explanation: 'Only org admins can grant or remove product access. ' +
           'Only org admins can manage groups. Only org admins can add users. Jira admins can add anyone to project roles.',
       },
@@ -32,7 +32,7 @@ const quizzes: { [index: string]: Quizz } = {
           'Project permission scheme',
           'Field configuration scheme',
         ],
-        goodAnswerIndex: 2,
+        goodAnswerIndexes: [2],
         explanation: 'The only thing that Amy cannot already do is create custom fields in a company-managed project. ' +
           'Amy needs the “Share dashboards and filters” global permission and for the third, she needs “Manage group filter subscriptions”. ' +
           'Amy needs to be a Jira Administrator. This can be done by modifying group membership, e.g. jira-admins-site-name.',
@@ -49,7 +49,7 @@ const quizzes: { [index: string]: Quizz } = {
           'Add Eloise to the Developers role in MIRO.',
           'Add Adrien, Huaying, Eloise to the Developers role in MIRO.',
         ],
-        goodAnswerIndex: 4,
+        goodAnswerIndexes: [4],
         explanation: 'All the schemes are shared between MIRO and DKIM so there is no MIRO Notification Scheme. ' +
           'We also cannot cause any changes to DKIM.' +
           'So all three people (Adrien, Huaying, Eloise) must be added to the Developers role in MIRO in order for all three to receive Issue Created notifications in MIRO.',
@@ -65,7 +65,7 @@ const quizzes: { [index: string]: Quizz } = {
           'Yes',
           'No',
         ],
-        goodAnswerIndex: 1,
+        goodAnswerIndexes: [1],
       },
       {
         question: 'Do sharks have teeth?',
@@ -73,7 +73,17 @@ const quizzes: { [index: string]: Quizz } = {
           'Yes',
           'No',
         ],
-        goodAnswerIndex: 0,
+        goodAnswerIndexes: [0],
+      },
+      {
+        question: 'Which ones have teeth?',
+        answers: [
+          'Horse',
+          'Duck',
+          'Owl',
+          'Cat'
+        ],
+        goodAnswerIndexes: [0,3],
       },
     ],
   },

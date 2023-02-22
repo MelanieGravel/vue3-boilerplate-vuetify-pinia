@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, Ref, ref } from 'vue';
 import { QuizzItem } from '../../models/quizz.model';
 
 export default defineComponent({
@@ -16,14 +16,29 @@ export default defineComponent({
   },
   emits: ['answerQuestion'],
   setup(props, {emit}) {
-    function answerQuestion(answerIndex: number): void {
-      console.log('card ', answerIndex);
-      emit('answerQuestion', answerIndex);
+    let choice: Ref<number | undefined> = ref(undefined);
+    let choices: Ref<number[]> = ref([]);
+
+    let isAnswerButtonEnabled = computed<boolean>(() => {
+      return choice.value !== undefined || choices.value.length > 0;
+    });
+
+    function answerQuestion(): void {
+      if(props.currentQuestion.goodAnswerIndexes.length > 1) {
+        emit('answerQuestion', choices.value);
+      } else {
+        emit('answerQuestion', [choice.value]);
+      }
+      choice.value = undefined;
+      choices.value = [];
     }
 
     return {
+      choice,
+      choices,
+      isAnswerButtonEnabled,
       answerQuestion,
-    }
+    };
   },
 });
 </script>
@@ -36,14 +51,39 @@ export default defineComponent({
     <v-card-text>
       {{ currentQuestion.question }}
 
-      <v-list class="text-left">
-        <v-list-item v-for="(answer, index) in currentQuestion.answers"
-                     @click="answerQuestion(index)"
-                     prepend-icon="fad fa-circle">
-          {{ answer }}
-        </v-list-item>
-      </v-list>
+      <v-radio-group v-if="currentQuestion.goodAnswerIndexes.length === 1" v-model="choice">
+        <v-radio v-for="(answer, index) in currentQuestion.answers"
+                 :key="'radio_'+index"
+                 :label="answer"
+                 :value="index"
+                 true-icon="fad fa-circle-dot"
+                 false-icon="fad fa-circle"
+        >
+        </v-radio>
+      </v-radio-group>
+
+
+      <template v-else>
+        <v-checkbox v-for="(answer, index) in currentQuestion.answers"
+                    v-model="choices"
+                    :key="'check_'+index"
+                    :label="answer"
+                    :value="index"
+                    true-icon="fad fa-square-check"
+                    false-icon="fad fa-square"
+        >
+        </v-checkbox>
+      </template>
     </v-card-text>
+    <v-card-actions class="justify-end">
+      <v-btn
+        :disabled="!isAnswerButtonEnabled"
+        @click="answerQuestion"
+      >
+        Next
+        <v-icon class="ml-2">fad fa-arrow-right</v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 

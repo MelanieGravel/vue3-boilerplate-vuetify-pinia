@@ -4,8 +4,9 @@ import HeroImage from './common/HeroImage.vue';
 import { shuffle } from '../utils';
 import { Quizz, QuizzItem, QuizzMistake } from '../models/quizz.model';
 import { quizzes } from '../data/quizzes';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import QuestionCard from './common/QuestionCard.vue';
+import {isEqual, sortBy} from 'lodash';
 
 export default defineComponent({
   name: 'QuizzezLanding',
@@ -35,16 +36,23 @@ export default defineComponent({
       return Math.round(goodAnswers.value / (quizQuestions.length) * 100);
     });
 
-    function answerQuestion(answerIndex: number): void {
-      console.log('quiz ', answerIndex);
-      if (answerIndex === currentQuestion.value.goodAnswerIndex) {
+    function answerQuestion(answerIndexes: number[]): void {
+      console.log(sortBy(answerIndexes));
+      console.log(currentQuestion.value.goodAnswerIndexes);
+      if (isEqual(sortBy(answerIndexes), currentQuestion.value.goodAnswerIndexes)) {
         goodAnswers.value++;
       } else {
+        const correctAnswers = currentQuestion.value.goodAnswerIndexes.map((value) => {
+          return currentQuestion.value.answers[value];
+        });
+        const userAnswers = answerIndexes.map((value) => {
+          return currentQuestion.value.answers[value];
+        });
         quizMistakes.value.push(
           {
             question: currentQuestion.value.question,
-            goodAnswer: currentQuestion.value.answers[currentQuestion.value.goodAnswerIndex],
-            wrongAnswer: currentQuestion.value.answers[answerIndex],
+            correctAnswers,
+            userAnswers,
             explanation: currentQuestion.value.explanation || '',
           },
         );
@@ -80,7 +88,7 @@ export default defineComponent({
 <template>
   <v-container fluid class="justify-center align-center">
     <hero-image
-      title="Single Quiz"
+      :title="quizData.title"
       :height="120"
     >
     </hero-image>
@@ -96,13 +104,21 @@ export default defineComponent({
           <v-card class="text-left">
             <template v-for="(mistake) in quizMistakes">
               <v-card-text class="text-subtitle-1 text-white">{{ mistake.question }}</v-card-text>
-              <v-card-subtitle class="text-error">
+              <v-card-subtitle
+                class="text-error"
+                v-for="(userAnswer, index) in mistake.userAnswers"
+                :key="'userAnswer_'+index"
+              >
                 <v-icon class="mr-4">fad fa-circle-xmark</v-icon>
-                {{ mistake.wrongAnswer }}
+                {{ userAnswer }}
               </v-card-subtitle>
-              <v-card-subtitle class="text-success text-primary-lighten-1">
+              <v-card-subtitle
+                class="text-success text-primary-lighten-1"
+                v-for="(correctAnswer, index) in mistake.correctAnswers"
+                :key="'correctAnswer'+index"
+              >
                 <v-icon class="mr-4">fad fa-circle-check</v-icon>
-                {{ mistake.goodAnswer }}
+                {{ correctAnswer }}
               </v-card-subtitle>
               <v-card-text class="text-grey">{{ mistake.explanation }}</v-card-text>
             </template>

@@ -6,13 +6,13 @@ export interface Quizz {
 export interface QuizzItem {
   question: string,
   answers: string[],
-  goodAnswerIndex: number,
+  goodAnswerIndexes: number[],
   explanation?: string,
 }
 
 export interface QuizzMistake {
   question: string,
-  goodAnswer: string,
-  wrongAnswer: string,
+  correctAnswers: string[],
+  userAnswers: string[],
   explanation: string,
 }
