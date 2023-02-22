@@ -2,12 +2,9 @@
 import { computed, defineComponent, Ref, ref } from 'vue';
 import HeroImage from './HeroImage.vue';
 import { shuffle } from '../utils';
-
-interface QuizzItem {
-  question: string,
-  answers: string[],
-  goodAnswerIndex: number,
-}
+import { QuizzItem } from '../models/quizz.model';
+import { quizzes } from '../data/quizzes';
+import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'QuizzezLanding',
@@ -17,25 +14,9 @@ export default defineComponent({
   setup() {
     let goodAnswers: Ref<number> = ref<number>(0);
     let currentQuestionIndex: Ref<number> = ref<number>(0);
-    let quizData: QuizzItem[] = [
-      {
-        question: 'Do hens have teeth?',
-        answers: [
-          'Yes',
-          'No',
-        ],
-        goodAnswerIndex: 1,
-      },
-      {
-        question: 'Do sharks have teeth?',
-        answers: [
-          'Yes',
-          'No',
-        ],
-        goodAnswerIndex: 0,
-      },
-
-    ];
+    const route = useRoute();
+    const id = route.params.id;
+    let quizData: QuizzItem[] = quizzes[id as string];
 
     const currentQuestion = computed<QuizzItem>(() => {
       return quizData[currentQuestionIndex.value];
@@ -106,12 +87,15 @@ export default defineComponent({
         </v-card-title>
         <v-card-text>
           {{ currentQuestion.question }}
+
+          <v-list class="text-left">
+            <v-list-item v-for="(answer, index) in currentQuestion.answers"
+                         @click="answerQuestion(index)"
+                         prepend-icon="fad fa-circle">
+              {{ answer }}
+            </v-list-item>
+          </v-list>
         </v-card-text>
-        <v-card-actions class="d-flex justify-space-around">
-          <v-btn v-for="(answer, index) in currentQuestion.answers" @click="answerQuestion(index)">
-            {{ answer }}
-          </v-btn>
-        </v-card-actions>
       </template>
     </v-card>
   </v-container>

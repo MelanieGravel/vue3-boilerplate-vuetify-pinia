@@ -49,7 +49,7 @@ export default defineComponent({
         icon: 'fab fa-aws',
         title: 'AWS',
         text: 'Amazon Web Services (AWS) is the world’s most comprehensive and broadly adopted cloud platform.',
-        url: '/aws',
+        url: '/quizz/aws',
         colors: [
           {
             color: '#eb6008',
